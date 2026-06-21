@@ -10,7 +10,7 @@ The system bypasses typical anti-scraping blocks by utilizing lightweight, real-
 
 ```text
 +-------------------------------------------------+
-|               Data Layer (Python)               |
+|                Data Layer (Python)              |
 |  [TechCrunch] [The Verge] [Ars Technica] [Wired] |
 +-----------------------+-------------------------+
                         | (RSS Feeds Parser)
@@ -30,32 +30,34 @@ The system bypasses typical anti-scraping blocks by utilizing lightweight, real-
                         v
        [LinkedIn US - Deep Tech Analysis]
        [LinkedIn BR - Culturally Localized Summary]
+```
 
-### Key Technical Highlights
-* **Agnostic LLM Layer:** Built with LangChain's unified interface (`BaseChatModel`), allowing seamless provider hot-swapping (tested across OpenAI and Groq) without altering core business logic.
-* **LCEL Implementation:** Uses LangChain Expression Language (`|` pipes) to build a clean, declarative, and production-ready execution chain.
-* **Advanced Prompt Engineering:** Implements strict system role isolation, transforming raw text snippets into highly structured market insights (The Headlines -> Market Outlook -> Next Steps) avoiding generic chatbot platitudes.
-* **Localization over Translation:** The agent doesn't just translate text; it adapts idioms, tone, and ecosystem context specifically for the Brazilian tech community.
+## Key Technical Highlights
+**Agnostic LLM Layer:** Built with LangChain's unified interface (BaseChatModel), allowing seamless provider hot-swapping (tested across OpenAI and Groq) without altering core business logic.
 
----
+**LCEL Implementation:** Uses LangChain Expression Language (| pipes) to build a clean, declarative, and production-ready execution chain.
+
+**Advanced Prompt Engineering:** Implements strict system role isolation, transforming raw text snippets into highly structured market insights (The Headlines -> Market Outlook -> Next Steps) avoiding generic chatbot platitudes.
+
+**Localization over Translation:** The agent doesn't just translate text; it adapts idioms, tone, and ecosystem context specifically for the Brazilian tech community.
 
 ## 🛠️ Tech Stack
+**Language:** Python 3.10+
 
-* **Language:** Python 3.10+
-* **Framework:** LangChain (Core, Groq Integration)
-* **LLM Provider:** Groq Cloud (`llama-3.3-70b-versatile`)
-* **Data Ingestion:** Feedparser (RSS XML Parsing)
-* **Environment Management:** Python-dotenv
+**Framework:** LangChain (Core, Groq Integration)
 
----
+**LLM Provider:** Groq Cloud (llama-3.3-70b-versatile)
+
+**Data Ingestion:** Feedparser (RSS XML Parsing)
+
+**Environment Management:** Python-dotenv
 
 ## 🚀 Getting Started
-
 ### 1. Clone & Environment Setup
 Ensure you have your virtual environment isolated and dependencies installed:
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/LuccaBrando/tech-agent-hub.git
 cd tech-agent-hub
 python -m venv venv
 
@@ -64,12 +66,18 @@ python -m venv venv
 
 # Install required packages
 pip install feedparser requests langchain langchain-groq python-dotenv
+```
 
-2. Configure API Keys
+### 2. Configure API Keys
 Create a .env file in the root directory:
+
+```env
 GROQ_API_KEY=your_groq_api_key_here
+```
 
-3. Run the Agent
+### 3. Run the Agent
 Execute the main agent orchestration script:
-python agent.py
 
+```bash
+python agent.py
+```
