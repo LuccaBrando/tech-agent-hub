@@ -8,27 +8,28 @@ An autonomous AI-driven market intelligence agent that aggregates real-time brea
 
 The system bypasses typical anti-scraping blocks by utilizing lightweight, real-time XML stream parsers. The collected data is then funneled into a cognitive orchestration layer managed by LangChain.
 
+```text
 +-------------------------------------------------+
 |               Data Layer (Python)               |
 |  [TechCrunch] [The Verge] [Ars Technica] [Wired] |
 +-----------------------+-------------------------+
-| (RSS Feeds Parser)
-v
+                        | (RSS Feeds Parser)
+                        v
 +-------------------------------------------------+
 |            Orchestration (LangChain)            |
 |   - LCEL Pipeline (prompt | llm)                |
 |   - System Role Constraints (VC Analyst Persona) |
 +-----------------------+-------------------------+
-| (Context Injection)
-v
+                        | (Context Injection)
+                        v
 +-------------------------------------------------+
 |             Inference Layer (Groq)              |
 |        Model: llama-3.3-70b-versatile           |
 +-----------------------+-------------------------+
-| (Dual Output)
-v
-[LinkedIn US - Deep Tech Analysis]
-[LinkedIn BR - Culturally Localized Summary]
+                        | (Dual Output)
+                        v
+       [LinkedIn US - Deep Tech Analysis]
+       [LinkedIn BR - Culturally Localized Summary]
 
 ### Key Technical Highlights
 * **Agnostic LLM Layer:** Built with LangChain's unified interface (`BaseChatModel`), allowing seamless provider hot-swapping (tested across OpenAI and Groq) without altering core business logic.
